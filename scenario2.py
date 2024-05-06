@@ -3,7 +3,7 @@ import numpy as np
 
 def main():
     # Create FourRooms Object
-    fourRoomsObj = FourRooms('simple')
+    fourRoomsObj = FourRooms('multi')
 
     # Hyperparameters
     alpha = 0.1  # Learning rate
@@ -19,13 +19,13 @@ def main():
 
     print('Training in progress...')
 
-    for epoch in range(num_epoch):
+    for episode in range(num_epoch):
         # Reset the environment for a new epoch
         fourRoomsObj.newEpoch()
         state = fourRoomsObj.getPosition()
         done = False
         
-        print(f"Epoch ================================= {epoch + 1}/{num_epoch}")
+        print(f"Epoch ============================================ {episode + 1}/{num_epoch}")
         while not done:
             # Epsilon-greedy action selection
             if np.random.rand() < epsilon:
@@ -37,8 +37,6 @@ def main():
             if not done:  # Ensure not in terminal state before taking action
                 grid_cell, next_pos, _, done = fourRoomsObj.takeAction(action)
                 next_pos = (min(max(next_pos[0], 1), 11), min(max(next_pos[1], 1), 11))  # Ensure position is within boundaries
-
-                #print("Agent took {0} action and moved to {1} of type {2}".format(aTypes[action], next_pos, gTypes[grid_cell]))
 
                 # Update Q-value
                 old_Q = Q[state[1], state[0], action]
@@ -63,15 +61,15 @@ def main():
     # while not done:
     #     action = np.argmax(Q[state[1], state[0]])  # Greedy action
     #     if not done:  # Ensure not in terminal state before taking action
-    #         gridType, next_pos, _, done = fourRoomsObj.takeAction(action)
-    #         print("Agent took {0} action and moved to {1} of type {2}".format(aTypes[action], next_pos, gTypes[gridType]))
+    #         grid_cell, next_pos, _, done = fourRoomsObj.takeAction(action)
+    #         print("Agent took {0} action and moved to {1} of type {2}".format(aTypes[action], next_pos, gTypes[grid_cell]))
     #         state = next_pos
 
     # Show the final Path
     fourRoomsObj.showPath(-1)
 
     # Save the final Path Image
-    fourRoomsObj.showPath(-1, savefig="scenario1_path.png")
+    fourRoomsObj.showPath(-1, savefig="scenario2_path.png")
 
 if __name__ == "__main__":
     main()
