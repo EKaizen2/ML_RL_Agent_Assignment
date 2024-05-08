@@ -3,16 +3,16 @@ import numpy as np
 
 def main():
     # Create FourRooms Object
-    fourRoomsObj = FourRooms('multi')
+    fourRoomsObj = FourRooms('multi',stochastic=True)
 
-    # Hyperparameters
+    # Set Hyperparameters
     alpha = 0.1  # Learning rate
     gamma = 0.9  # Discount factor
     epsilon = 0.1  # Exploration rate
     num_epoch = 100
 
     # Initialize Q-table
-    Q = np.zeros((13, 13, 4))  # Q-table: 13x13 grid, 4 actions
+    Q = np.zeros((13, 13, 4))  # Q-table: 11x11 grid, 4 actions
 
     aTypes = ['UP', 'DOWN', 'LEFT', 'RIGHT']
     gTypes = ['EMPTY', 'RED', 'GREEN', 'BLUE']

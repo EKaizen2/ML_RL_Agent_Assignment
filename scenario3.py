@@ -3,16 +3,16 @@ from FourRooms import FourRooms
 
 def main():
     # Create FourRooms Object
-    fourRoomsObj = FourRooms('rgb')
+    fourRoomsObj = FourRooms('rgb',stochastic=True)
 
-    # Hyperparameters
+    # Set Hyperparameters
     alpha = 0.1  # Learning rate
     gamma = 0.9  # Discount factor
     epsilon = 0.1  # Exploration rate
     num_epoch = 100
 
     # Initialize Q-table
-    Q = np.zeros((13, 13, 4))  # Q-table: 12x12 grid, 4 actions
+    Q = np.zeros((13, 13, 4))  # Q-table: 11x11 grid, 4 actions
 
     print('Training in progress...')
 
@@ -71,7 +71,7 @@ def main():
 
             state = next_pos
 
-            print('Packages collected: ', packages_collected)
+        #print('Packages collected: ', packages_collected)
 
         # Decay epsilon
         epsilon = max(epsilon * 0.99, 0.01)
