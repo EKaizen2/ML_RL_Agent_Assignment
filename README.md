@@ -2,6 +2,9 @@ Github Repo Link: https://github.com/EKaizen2/ML_RL_Agent_Assignment.git
 
 ReadME.txt: Contains list of all files submitted and the use of each
 
+Makefile: This is a file for building a python virtual environment on certain listed libraries in the requirments document.
+This is to set up an environment with the necessary modules to run this project.
+
 ExecutionSkeleton.py: Skeleton code provided
 
 FourRooms.py: Function file which contains the environment and the methods of the environment
