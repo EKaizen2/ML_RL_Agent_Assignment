@@ -38,6 +38,8 @@ def main():
                 grid_cell, next_pos, _, done = fourRoomsObj.takeAction(action)
                 next_pos = (min(max(next_pos[0], 1), 11), min(max(next_pos[1], 1), 11))  # Ensure position is within boundaries
 
+                print("Agent took {0} action and moved to {1} of type {2}".format(aTypes[action], next_pos, gTypes[grid_cell]))
+
                 # Update Q-value
                 old_Q = Q[state[1], state[0], action]
                 if not done:
